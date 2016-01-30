@@ -1,0 +1,19 @@
+{
+  "name": "marching-squares",
+  "version": "0.1.0",
+  "description": "Outline a region in a two-dimensional grid using a marching squares algorithm",
+  "main": "index.js",
+  "repository": "https://github.com/scottglz/marching-squares",
+  "scripts": {
+    "test": "tape test.js",
+    "lint": "jshint index.js",
+    "validate": "npm ls",
+    "prepublish": "npm run lint && npm run validate && npm test" 
+  },
+  "author": "Scott Glazer",
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "^2.9.1",
+    "tape": "^4.4.0"
+  }
+}
