@@ -71,9 +71,10 @@ var transitions = [
  *   any x and y including negative values "outside the bitmap" (for which it
  *   should return false).
  * @returns {array[object]} array of point objects with x & y properties tracing
- *   a closed polygon around the region. This polygon consists entirely
- *   of one-unit-long horizontal or vertical segments. Use a polygon 
- *   simplification routine on the results to simplify and/or smooth it.
+ *   a closed polygon around the region. The first point is NOT repeated 
+ *   as the last point. The polygon consists entirely of one-unit-long 
+ *   horizontal or vertical segments. Use a polygon simplification routine on 
+ *   the results to simplify and/or smooth it.
  *  (Might I suggest https://www.npmjs.com/package/line-simplify-rdp ?)
  */
 function traceRegion(x, y, isInside) {
@@ -94,9 +95,11 @@ function traceRegion(x, y, isInside) {
       dir = transitions[square][dir[2]];
       x += dir[0];
       y += dir[1];
-      ret.push({x:x, y:y});
+      
       if (x === startX && y === startY)
          return ret;
+      
+      ret.push({x:x, y:y});
 
       if (dir === DOWN) 
          square = ((square & 12) >> 2);
